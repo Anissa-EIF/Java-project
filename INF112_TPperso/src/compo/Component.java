@@ -170,7 +170,7 @@ public abstract class Component implements Figure, Serializable {
      */
     public Room getGoodRoom() {
         if (room == null) {
-            for (Factory factory : model.getFactorys()) {
+            for (Factory factory : model.getFactories()) {
                 for (Room r : factory.getRooms()) {
                     if (isInRoom(r)) {
                         return r;
@@ -181,7 +181,7 @@ public abstract class Component implements Figure, Serializable {
             }
         }
         if (!isInRoom(this.room)) {
-            for (Factory factory : model.getFactorys()) {
+            for (Factory factory : model.getFactories()) {
                 for (Room r : factory.getRooms()) {
                     if (isInRoom(r)) {
                         return r;
