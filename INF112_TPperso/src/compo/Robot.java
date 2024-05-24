@@ -26,11 +26,6 @@ public class Robot extends Component {
     private int speed;
 
     /**
-     * The battery level of the robot.
-     */
-    private int battery;
-
-    /**
      * The default color of the robot.
      */
     private final ColorObject color = new ColorObject(0, 0, 0);
@@ -75,7 +70,6 @@ public class Robot extends Component {
     public Robot(String name, int xCoord, int yCoord, int xSize, int speed, Factory factory, ArrayList<Component> destinations, Room currentRoom) {
         super(name, xCoord, yCoord, xSize, xSize);
         this.speed = speed;
-        this.battery = 100;
         this.factory = factory;
         this.factory.addCompo(this);
         this.room = currentRoom;
@@ -241,7 +235,7 @@ public class Robot extends Component {
      */
     @Override
     public String toString() {
-        return "\t ROBOT " + this.getName() + " en x = " + xCoord + " y = " + yCoord + " _ " + xSize + " x " + xSize + " _ speed / batterie = " + speed + "/" + battery;
+        return "\t ROBOT " + this.getName() + " en x = " + xCoord + " y = " + yCoord + " _ " + xSize + " x " + xSize + " _ speed " + speed;
     }
 
     /**
