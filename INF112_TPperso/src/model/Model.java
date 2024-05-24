@@ -26,7 +26,7 @@ public class Model implements Canvas, Observable, Serializable {
     // List of observers monitoring changes in the model
     private transient ArrayList<Observer> observers;
     // List of factories on the canvas
-    private ArrayList<Factory> factorys;
+    private ArrayList<Factory> factories;
     // Indicates whether animation is playing
     private boolean play;
     
@@ -37,7 +37,7 @@ public class Model implements Canvas, Observable, Serializable {
         this.xSize = xSize;
         this.ySize = ySize;
         this.compoList = new ArrayList<Component>();
-        this.factorys = new ArrayList<Factory>();
+        this.factories = new ArrayList<Factory>();
         this.observers = new ArrayList<Observer>();
     }
     
@@ -61,7 +61,7 @@ public class Model implements Canvas, Observable, Serializable {
         }
         // If it's a factory, add it to the factory list; otherwise, add it to the component list
         if (compo instanceof Factory) {
-            factorys.add((Factory) compo);
+            factories.add((Factory) compo);
         } else {
             compoList.add(compo);
         }
@@ -72,16 +72,16 @@ public class Model implements Canvas, Observable, Serializable {
     // String representation of the model
     @Override
     public String toString() {
-        String res = "Ce modèle est composé de " + this.factorys.size() + " usines : ";
-        for (Factory f : factorys) {
+        String res = "Ce modèle est composé de " + this.factories.size() + " usines : ";
+        for (Factory f : factories) {
             res += "\n \t";
             res += f.toString();
         }
         return res + "\n ___________________________________________________________";
     }
     
-    public ArrayList<Factory> getFactorys() {
-        return factorys;
+    public ArrayList<Factory> getFactories() {
+        return factories;
     }
     
     // Getters and setters for canvas properties
@@ -143,7 +143,7 @@ public class Model implements Canvas, Observable, Serializable {
     
     // Methods related to animation behavior
     public void behave(boolean play) {
-        for (Factory f : factorys) {
+        for (Factory f : factories) {
             f.behave(play);
         }
     }
@@ -155,7 +155,7 @@ public class Model implements Canvas, Observable, Serializable {
     public void setPlay(boolean play) {
         if (this.play != play) {
             this.play = play;
-            for (Factory f : factorys) {
+            for (Factory f : factories) {
                 f.behave(play);
             }
             notifyObservers();
